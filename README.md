@@ -85,8 +85,10 @@ $ docker volume inspect todo-db
 ### Define Environment Variables
 
 ```bash
+docker build -t mfe1 .
 docker run -dp \
     9001:9001 \
+    -e PORT=9001 \
     -e ENV_VARIABLE_1=app \
     -e ENV_VARIABLE_SECRETS=secret \
     mfe1
