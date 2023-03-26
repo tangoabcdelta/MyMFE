@@ -40,10 +40,3 @@ app.set("views", path.join(__dirname, "views"));
 app.engine("html", require("ejs").renderFile);
 app.set("view engine", "html");
 ```
-
-# Run Image
-
-```bash
-docker build -t mfe1 .
-docker run -dp 9001:9001 mfe1
-```
