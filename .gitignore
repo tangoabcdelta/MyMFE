@@ -1,0 +1,93 @@
+# This is a minimal list, OK to add things per repo
+# mac specific
+.DS_Store
+.ansible
+.azure/
+.bash_history
+
+
+# don't check storage creds into GH
+.boto
+.cache
+*.code-workspace
+
+
+#  may contain gcloud files
+.config
+.gitconfig
+.local
+
+
+# .netrc contains secrets for service tokens
+.netrc
+*.plan
+.sentinel
+
+
+# .ssh dir may contain private keys
+.ssh
+
+# SSH Keys
+*.pem
+
+
+# Terraform dot files
+.terrascan
+.terraform.d
+terraform.rc
+
+# Directories
+.terraform/
+.terraform
+.terraformrc
+**/.terraform/*
+
+
+
+# Compiled files
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+*.tfstate.lock.info*.terraform.lock.hcl
+
+
+# Auto variables
+terraform.tfvars
+terraform.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
+
+# logs
+*.log
+
+# Crash log files
+crash.log
+
+
+
+# Backup files
+*.bak
+
+# Ignored Terraform files
+*gitignore*.tf
+
+
+# Palo auth codes
+authcodes
+credentials.json
+
+
+# Palo specific
+init-cfg.txt
+temp
+tmp
+
+
+# Ignore Mac .DS_Store files
+.DS_Store
+
+# Ignored vscode files
+.vscode/
+.vscode
+.idea
+.idea
