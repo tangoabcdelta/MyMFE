@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var process = require("process");
+var package = require("./package.json");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -37,7 +38,13 @@ app.use((req, res, next) => {
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-
+app.use("/healthcheck", (req, res) => {
+  res.send({
+    appName: package.name,
+    appVersion: package.version,
+    port: package.config.port,
+  });
+});
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

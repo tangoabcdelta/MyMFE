@@ -3,4 +3,4 @@ WORKDIR /
 COPY . .
 RUN npm ci
 CMD ["npm", "start"]
-EXPOSE 9001
+EXPOSE 9003

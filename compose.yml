@@ -1,0 +1,54 @@
+# docker-compose file in yaml file format
+version: "3" # specifies the version of the docker compose file format being used
+services: # define the services that will be deployed
+  mfe1: # define a service named mfe1
+    # links: # Links (Deprecated): specify the services that mfe1 depends on,
+    #   - mfe2
+    #   - mfe3
+    #   - mfe4
+    container_name: mfe1 # sets the name of the container to mfe1
+    build: # specify the build context and dockerfile used to build image for this service
+      context: ./mfe1 # sets the context of the directory
+      dockerfile: Dockerfile # the dockerfile to be used
+    ports: # map the port on the host to the port on the container
+      - "9001:9001" # map host's 9001 port with container's 9001 port
+    networks: # associate the service with a specific network
+      - mfe1-network # connect the serice to mfe1-network
+  mfe2: # define a service named mfe2
+    container_name: mfe2 # sets the name of the container to mfe2
+    build: # sets the build context and dockerfile
+      context: ./mfe2 # sets the context as the local directory
+      dockerfile: Dockerfile # the dockerfile to be used for building the image
+    volumes: # mounts volumes from the host machine to the container
+      - "./mfe2:/usr/app" # mounts the mfe2 directory (on the host machine) to the `/usr/app` directory inside the container
+      - "./mfe2/node_modules:/usr/app/node_modules" # mounts the /usr/app/node_modules directory in the container
+    ports: # maps the host machines port to the container's ports
+      - "9002:9002" # maps port 9001 of the host to port 9002 of the container
+    networks: # to connect both services to the same network, you must define the network explicitly
+      - mfe1-network # MFE2 must be part of the same network that MFE1 is in
+  mfe3:
+    container_name: mfe3
+    build:
+      context: ./mfe3
+      dockerfile: Dockerfile
+    volumes:
+      - "./mfe3:/usr/app"
+      - "./mfe3/node_modules:/usr/app/node_modules"
+    ports:
+      - "9003:9003"
+    networks:
+      - mfe1-network
+  mfe4:
+    container_name: mfe4
+    build:
+      context: ./mfe4
+      dockerfile: Dockerfile
+    volumes:
+      - "./mfe4:/usr/app"
+      - "./mfe4/node_modules:/usr/app/node_modules"
+    ports:
+      - "9004:9004"
+    networks:
+      - mfe1-network
+networks:
+  mfe1-network:

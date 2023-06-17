@@ -1,4 +1,29 @@
-# Run Individual Image
+# Run
+
+You can use the `proxy.sh` file at the root to run.
+Alternatively, you can also use `npm start`. Both do (and must do) the exact same thing.
+
+```bash
+./proxy.sh
+# OR
+npm start
+
+```
+
+## What does the compose file do
+
+- We have a docker-compose file in yaml file format which first specifies a version of the docker compose file format being used.
+- Then in the `services` section, it defines the services that will be deployed.
+- By services, we mean the different Micro Front Ends.
+- We specify container names by looking at the docker images.
+- Run `docker ps` command in a terminal to list your containers and get their container names
+- If you have docker desktop running locally, then you can get those names from its GUI as well.
+- Next, we specify the build context i.e. the directory and the docker file to be used for launching the service
+- We also volume mount the local directory from host machine i.e. your local and map it with `/usr/app` of the image
+- We distinguish each MFE with a different port while making them part of the same MFE network
+- We map the host machines port with that of the container
+
+### Run Individual Image
 
 Instructions at: https://docs.docker.com/get-started/02_our_app/
 
@@ -17,12 +42,6 @@ docker run -dp 9001:9001 mfe1
 cd mfe2
 docker build -t mfe2 .
 docker run -dp 9002:9002 mfe2
-```
-
-Run the following `docker ps` command in a terminal to list your containers.
-
-```bash
-docker ps
 ```
 
 ### Update the container and run

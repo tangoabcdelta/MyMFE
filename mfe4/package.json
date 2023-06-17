@@ -2,7 +2,7 @@
   "name": "mfe4",
   "version": "0.0.0",
   "config": {
-    "port": 9002
+    "port": 9004
   },
   "private": true,
   "scripts": {

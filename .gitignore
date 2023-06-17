@@ -48,8 +48,8 @@ terraform.rc
 *.tfstate
 *.tfstate.*
 *.tfstate.backup
-*.tfstate.lock.info*.terraform.lock.hcl
-
+*.tfstate.lock.info*
+.terraform.lock.hcl
 
 # Auto variables
 terraform.tfvars
@@ -91,3 +91,6 @@ tmp
 .vscode
 .idea
 .idea
+node_modules
+
+package-lock.json
