@@ -50,5 +50,17 @@ services: # define the services that will be deployed
       - "9004:9004"
     networks:
       - mfe1-network
+  graphqlserver:
+    container_name: graphqlserver
+    build:
+      context: ./GraphQLServer
+      dockerfile: Dockerfile
+    volumes:
+      - "./GraphQLServer:/usr/app"
+      - "./GraphQLServer/node_modules:/usr/app/node_modules"
+    ports:
+      - "9005:9005"
+    networks:
+      - mfe1-network
 networks:
   mfe1-network:
