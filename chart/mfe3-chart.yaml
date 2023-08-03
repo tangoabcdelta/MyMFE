@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mfe3-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mfe3
+  template:
+    metadata:
+      labels:
+        app: mfe3
+    spec:
+      containers:
+        - name: mfe3
+          image: <replace_with_mfe3_image>:<tag>
+          ports:
+            - containerPort: 9003
+      # Add any additional configuration needed, such as environment variables, volumes, etc.
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mfe3-service
+spec:
+  selector:
+    app: mfe3
+  ports:
+    - protocol: TCP
+      port: 9003
+      targetPort: 9003

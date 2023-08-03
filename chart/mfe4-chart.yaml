@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mfe4-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mfe4
+  template:
+    metadata:
+      labels:
+        app: mfe4
+    spec:
+      containers:
+        - name: mfe4
+          image: <replace_with_mfe4_image>:<tag>
+          ports:
+            - containerPort: 9004
+      # Add any additional configuration needed, such as environment variables, volumes, etc.
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mfe4-service
+spec:
+  selector:
+    app: mfe4
+  ports:
+    - protocol: TCP
+      port: 9004
+      targetPort: 9004

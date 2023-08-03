@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mfe1-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mfe1
+  template:
+    metadata:
+      labels:
+        app: mfe1
+    spec:
+      containers:
+        - name: mfe1
+          image: <replace_with_mfe1_image>:<tag>
+          ports:
+            - containerPort: 9001
+      # Add any additional configuration needed, such as environment variables, volumes, etc.
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mfe1-service
+spec:
+  selector:
+    app: mfe1
+  ports:
+    - protocol: TCP
+      port: 9001
+      targetPort: 9001

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: graphqlserver-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: graphqlserver
+  template:
+    metadata:
+      labels:
+        app: graphqlserver
+    spec:
+      containers:
+        - name: graphqlserver
+          image: <replace_with_graphqlserver_image>:<tag>
+          ports:
+            - containerPort: 9005
+      # Add any additional configuration needed, such as environment variables, volumes, etc.
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: graphqlserver-service
+spec:
+  selector:
+    app: graphqlserver
+  ports:
+    - protocol: TCP
+      port: 9005
+      targetPort: 9005

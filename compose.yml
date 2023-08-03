@@ -64,3 +64,4 @@ services: # define the services that will be deployed
       - mfe1-network
 networks:
   mfe1-network:
+    driver: bridge

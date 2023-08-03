@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mfe1
+  labels:
+    name: mfe1
+spec:
+  containers:
+    - name: mfe1
+      image: mymfe-mfe1:latest
+      ports:
+        - containerPort: 9001
+          name: mfe1-service
