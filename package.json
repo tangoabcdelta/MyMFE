@@ -5,6 +5,7 @@
   "scripts": {
     "start": "docker-compose -f compose.yml up --build",
     "start:all": "npm-run-all micro:*",
+    "micro:base": "nodemon ./base/bin/www",
     "micro:mfe1": "nodemon ./mfe1/bin/www",
     "micro:mfe2": "nodemon ./mfe2/bin/www",
     "micro:mfe3": "nodemon ./mfe4/bin/www",
