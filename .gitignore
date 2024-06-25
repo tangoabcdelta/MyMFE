@@ -87,8 +87,8 @@ tmp
 .DS_Store
 
 # Ignored vscode files
-.vscode/
-.vscode
+# .vscode/
+# .vscode
 .idea
 .idea
 node_modules
