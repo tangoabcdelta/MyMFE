@@ -2,19 +2,28 @@ To use the Helm charts and deploy your project in Minikube, Kind, or any other l
 
 ### Install Helm:
 
-Make sure you have Helm installed on your system. You can find the installation instructions for your platform at the official Helm website: https://helm.sh/docs/intro/install/
+* Make sure you have Helm installed on your system.
+* You can find the installation instructions for your platform at the official Helm website: https://helm.sh/docs/intro/install/
+* Locally, you can just `brew install helm`
+* Test if the installation was successful: `which helm` and it should read `/opt/homebrew/bin/helm` or something similar.
 
 ### Set up Kubernetes cluster:
 
-Ensure you have a Kubernetes cluster running locally, such as Minikube or Kind. If you don't have one, follow the respective installation and setup instructions for your chosen Kubernetes solution.
+* Ensure you have a Kubernetes cluster running locally, such as Minikube or Kind.
+* If you don't have one, follow the respective installation and setup instructions for your chosen Kubernetes solution.
+* Check for status: `minikube status`
+
 
 ### Initialize Helm:
 
-Once Helm is installed, initialize Helm on your cluster by running the following command:
+* Once Helm is installed, initialize Helm `helm create chart`
+* This shall create a folder with all charts
 
 ```bash
-helm init
+
 ```
+
+
 
 ### Get Docker Images
 
